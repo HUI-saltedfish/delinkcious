@@ -1,6 +1,7 @@
 FROM golang:1.15 AS builder
 ADD ./main.go main.go
 ADD ./service service
+ENV GOPROXY=https://goproxy.io,direct
 # Fetch dependencies
 RUN go get -d -v
 
