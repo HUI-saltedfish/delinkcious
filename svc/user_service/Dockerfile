@@ -1,8 +1,8 @@
 FROM circleci/golang AS builder
 ADD ./main.go main.go
 ADD ./service service
-COPY /home/hui/Desktop/workspace/go/src/delinkcious/go.mod go.mod
-COPY /home/hui/Desktop/workspace/go/src/delinkcious/go.sum go.sum
+COPY ../../go.mod go.mod
+COPY ../../go.sum go.sum
 # Fetch dependencies
 ENV GOPROXY=https://goproxy.cn,direct
 RUN go get -d -v ./...
