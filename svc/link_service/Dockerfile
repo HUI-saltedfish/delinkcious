@@ -2,6 +2,7 @@ FROM golang:1.11 AS builder
 ADD ./main.go main.go
 ADD ./service service
 # Fetch dependencies
+ENV GOPROXY=https://goproxy.cn,direct
 RUN go get -d -v
 
 # Build image as a truly static Go binary
