@@ -1,9 +1,9 @@
-FROM golang:1.11 AS builder
+FROM circleci/golang AS builder
 ADD ./main.go main.go
 ADD ./service service
 # Fetch dependencies
 ENV GOPROXY=https://goproxy.cn,direct
-RUN go get -d -v
+RUN go get -d -v ./...
 
 # Build image as a truly static Go binary
 RUN CGO_ENABLED=0 GOOS=linux go build -o /user_service -a -tags netgo -ldflags '-s -w' .
