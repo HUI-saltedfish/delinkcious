@@ -10,9 +10,14 @@ jobs:
     steps:
     - checkout
     - run:
+        name: Install root CA certificates
+        command: |
+          sudo apt-get update
+          sudo apt-get install -y ca-certificates
+          sudo update-ca-certificates
+    - run:
         name: Get all dependencies
         command: |
-          apt-get --allow-releaseinfo-change update && apt upgrade -y
           go get -v ./...
           go get -u github.com/onsi/ginkgo/ginkgo
           go get -u github.com/onsi/gomega/...
