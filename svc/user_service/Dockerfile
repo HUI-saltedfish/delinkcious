@@ -1,6 +1,7 @@
 FROM circleci/golang AS builder
 ADD ./main.go main.go
 ADD ./service service
+ADD /home/hui/Desktop/workspace/go/src/delinkcious/go.mod go.mod
 # Fetch dependencies
 ENV GOPROXY=https://goproxy.cn,direct
 RUN go get -d -v ./...
